@@ -62,6 +62,11 @@ export default class JoyrideTooltip extends React.Component {
     this.forceUpdate();
     onRender();
 
+    if (document.body) {
+      this.bodyStyle = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+    }
+
     if (showOverlay && allowClicksThruHole) {
       document.addEventListener('mousemove', this.handleMouseMove, false);
     }
@@ -137,6 +142,10 @@ export default class JoyrideTooltip extends React.Component {
   }
 
   componentWillUnmount() {
+    if (document.body) {
+      document.body.style.overflow = this.bodyStyle;
+    }
+
     document.removeEventListener('mousemove', this.handleMouseMove, false);
   }
 
