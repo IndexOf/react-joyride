@@ -813,7 +813,7 @@ class Joyride extends React.Component {
     const { isRunning, standaloneData } = this.state;
     let tooltipData = e.currentTarget.dataset.tooltip;
 
-    if (['mouseenter', 'mouseleave'].includes(e.type) && hasTouch) {
+    if (['mouseenter', 'mouseleave'].indexOf(e.type) !== -1 && hasTouch) {
       return;
     }
 
@@ -867,10 +867,10 @@ class Joyride extends React.Component {
   onClickTooltip(e) {
     const { index, shouldRun } = this.state;
     const { steps, type } = this.props;
-    const el = e.currentTarget.className.includes('joyride-') && [
+    const el = e.currentTarget.className.indexOf('joyride-') !== -1 && [
       'A',
       'BUTTON'
-    ].includes(e.currentTarget.tagName) ? e.currentTarget : e.target;
+    ].indexOf(e.currentTarget.tagName) !== -1 ? e.currentTarget : e.target;
     const dataType = el.dataset.type;
 
     /* istanbul ignore else */
