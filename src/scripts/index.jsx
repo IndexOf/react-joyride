@@ -88,7 +88,7 @@ class Joyride extends React.Component {
     locale: {
       back: 'Back',
       close: 'Close',
-      last: 'Last',
+      last: 'Close',
       next: 'Next',
       skip: 'Skip'
     },
